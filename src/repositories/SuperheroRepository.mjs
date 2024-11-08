@@ -23,11 +23,11 @@ class SuperHeroRepository extends IRepository{
         //const query1 = { edad: {$gt: 30}}
         //const query2 = { edad: {$gt: 30}, planetaOrigen: 'Tierra'}
         //const query3 = { edad: {$gt: 30}, planetaOrigen: 'Tierra', poderes: { $size: {$gte: 2}}}
-        const query = { edad: { $gt: 30 }, planetaOrigen: 'Tierra', 
-            $expr: { $gte: [ { $size: "$poderes" }, 2 ] }
-        };
         
-        return await SuperHero.find(query);
+        const query7 = {
+            $expr: { $gte: [{ $size: "$poderes" }, 3] }
+        };
+        return await SuperHero.find(query7);
 
     }
 }
