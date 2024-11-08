@@ -16,9 +16,19 @@ async function obtenerSuperHeroMayoresA30() {
     return await SuperheroRepository.obtnerMayoresA30();
 }
 
+async function agregarSuperHero(datos) {
+    return await SuperheroRepository.agregarSuperhero(datos);
+}
+
+async function eliminarSuperhero(id) {
+    return await SuperheroRepository.eliminarSuperhero(id);
+}
+
 export{
     obtenerSuperHeroPorId,
     obtenerListaSuperHeroes,
     buscarSuperHeroPorAtributo,
-    obtenerSuperHeroMayoresA30
+    obtenerSuperHeroMayoresA30,
+    agregarSuperHero,
+    eliminarSuperhero
 }

@@ -2,7 +2,9 @@ import {
     obtenerSuperHeroPorId,
     obtenerListaSuperHeroes,
     buscarSuperHeroPorAtributo,
-    obtenerSuperHeroMayoresA30
+    obtenerSuperHeroMayoresA30,
+    agregarSuperHero,
+    eliminarSuperhero
 } from '../services/SuperheroesService.mjs';
 import { 
     renderizarMensaje,
@@ -53,6 +55,36 @@ export async function buscarSuperHeroPorAtributoController(req, res) {
 export async function obtenerSuperHeroMayoresA30Controller(req, res) {
     const superheroes = await obtenerSuperHeroMayoresA30();
     res.send(renderizarListaSuperheroe(superheroes));
+}
+
+export async function agregarSuperHeroController(req, res) {
+    try {
+        const datos = req.body;
+        const nuevoSuperheroe = await agregarSuperHero(datos);
+        
+        res.status(201).json({ message: 'Superhéroe agregado exitosamente', data: nuevoSuperheroe });
+    } catch (error) {
+        res.status(500).json({ message: 'Error al agregar el superhéroe', error: error.message });
+    }
+}
+
+export async function eliminarSuperHeroController(req, res){
+    try {
+        const {id} = req.params;
+        const deleteSuperhero = await eliminarSuperhero(id);
+
+        if (deleteSuperhero) {
+
+            res.send(renderizarMensaje("¡Superheroe eliminado con éxito!"));
+
+        }else{
+
+            res.status(404).send(renderizarMensaje("Superheroe no encontrado"));
+
+        }
+    } catch (error) {
+        res.status(500).json({ message: 'Error al eliminar el superhéroe', error: error.message });
+    }
 }
 
 
