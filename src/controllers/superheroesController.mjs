@@ -4,12 +4,15 @@ import {
     buscarSuperHeroPorAtributoService,
     buscarSuperHeroMayoresA30Service,
     agregarSuperHeroService,
-    eliminarSuperheroService
+    eliminarSuperheroPorIdService,
+    eliminarSuperHeroPorNombreService
 } from '../services/SuperheroesService.mjs';
+
 import {
     renderizarMensaje,
     renderizarListaSuperheroe,
-    renderizarSuperheroe
+    renderizarSuperheroe,
+    renderizarMensajeCRUD
 } from '../view/responseView.mjs';
 
 
@@ -57,25 +60,29 @@ export const obtenerSuperHeroMayoresA30Controller = async (req, res) => {
     res.send(renderizarListaSuperheroe(superheroes));
 }
 
-export async function agregarSuperHeroController(req, res) {
+export const agregarSuperHeroController = async (req, res) => {
     try {
         const datos = req.body;
         const nuevoSuperheroe = await agregarSuperHeroService(datos);
 
-        res.status(201).json({ message: 'Superhéroe agregado exitosamente', data: nuevoSuperheroe });
+        //res.status(201).json({ message: 'Superhéroe agregado exitosamente', data: nuevoSuperheroe });
+        res.status(201).send(renderizarMensajeCRUD("Superhéroe agregado exitosamente", nuevoSuperheroe));
+
     } catch (error) {
         res.status(500).json({ message: 'Error al agregar el superhéroe', error: error.message });
     }
 }
 
-export async function eliminarSuperHeroController(req, res) {
+export const eliminarSuperHeroPorIdController = async (req, res) => {
     try {
         const { id } = req.params;
-        const deleteSuperhero = await eliminarSuperheroService(id);
+        const superhero = await eliminarSuperheroPorIdService(id);
 
-        if (deleteSuperhero) {
+        if (superhero) {
 
-            res.send(renderizarMensaje("¡Superheroe eliminado con éxito!"));
+            //res.send(renderizarMensaje("¡Superheroe eliminado con éxito!"));
+            //res.send(renderizarSuperheroe(deleteSuperhero));
+            res.send(renderizarMensajeCRUD("¡Superheroe eliminado con éxito!", superhero));
 
         } else {
 
@@ -86,6 +93,24 @@ export async function eliminarSuperHeroController(req, res) {
         res.status(500).json({ message: 'Error al eliminar el superhéroe', error: error.message });
     }
 }
+
+export const eliminarSuperHeroPorNombreController = async (req, res) =>{
+
+    try {
+        const {nombre} = req.params; 
+        const superheroes = await eliminarSuperHeroPorNombreService (nombre); 
+
+        //aqui va un if para determinar si es 1 o más Superheroes
+        if (superheroes.length === 1) {
+            res.send(renderizarMensajeCRUD('¡Superheroe eliminado con éxito!', superheroes))
+        }else{
+            res.send(renderizarMensajeCRUD('¡Superheroes eliminados con éxito!', superheroes))
+        }
+        
+    } catch (error) {
+        res.status(404).send(renderizarMensaje(error.message));
+    }
+} 
 
 
 

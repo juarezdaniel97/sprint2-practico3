@@ -20,7 +20,11 @@ export const agregarSuperHeroService = async (datos) => {
     return await SuperheroRepository.create(datos);
 }
 
-export const eliminarSuperheroService = async (id) => {
-    return await SuperheroRepository.delete(id);
+export const eliminarSuperheroPorIdService = async (id) => {
+    return await SuperheroRepository.deleteById(id);
+}
+
+export const eliminarSuperHeroPorNombreService = async (nombre) => {
+    return await SuperheroRepository.deleteByName(nombre);
 }
 

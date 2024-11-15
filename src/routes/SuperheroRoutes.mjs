@@ -5,7 +5,8 @@ import {
     buscarSuperHeroPorAtributoController,
     obtenerSuperHeroMayoresA30Controller,
     agregarSuperHeroController,
-    eliminarSuperHeroController
+    eliminarSuperHeroPorIdController,
+    eliminarSuperHeroPorNombreController
 } from '../controllers/superheroesController.mjs';
 
 
@@ -16,7 +17,8 @@ router.get('/heroes/:id', obtenerSuperHeroPorIdController);
 router.get('/heroes/buscar/:atributo/:valor', buscarSuperHeroPorAtributoController);
 router.get('/heroes/mayores/30', obtenerSuperHeroMayoresA30Controller);
 router.post('/heroes/', agregarSuperHeroController );
-router.delete('/heroes/delete/:id', eliminarSuperHeroController)
+router.delete('/heroes/delete/:id', eliminarSuperHeroPorIdController);
+router.delete('/heroes/delete-nombre/:nombre', eliminarSuperHeroPorNombreController);
 
 
 export default router;

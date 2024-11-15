@@ -45,10 +45,30 @@ class SuperHeroRepository extends IRepository{
         }
     }
 
-    async delete(id){
+    async deleteById(id){
         return await SuperHero.findByIdAndDelete(id); 
     }
     
+    async deleteByName(name){
+
+        //Buscamos los Superheroes con el nombre ingresado
+        const query = {nombreSuperheroe:name}; 
+        
+        const superheroes = await SuperHero.find(query);
+        console.log("Listado: ", superheroes);
+        
+        if (superheroes.length === 0) {
+            throw new Error(`No se encontraron Superheroes con el nombre ${name}`);
+        }
+
+        /*Eliminamos los superheroes encontrados
+            - deleteOne(filter) -> Elimina el primer documento que coincida con el filtro.
+            - deleteMany (filter) -> Elimina todos los documentos que coincidan con el filtro.
+        */
+        await SuperHero.deleteMany(query);
+
+        return superheroes;
+    }
 }
 
 export default new SuperHeroRepository();

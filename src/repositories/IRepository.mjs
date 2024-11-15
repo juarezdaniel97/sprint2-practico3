@@ -20,7 +20,11 @@ class IRepository{
         throw new Error("Método 'create()' no implementado");
     }
 
-    delete(){
+    deleteById(){
+        throw new Error("Método 'delete()' no implementado");
+    }
+    
+    deleteByName(){
         throw new Error("Método 'delete()' no implementado");
     }
 /*

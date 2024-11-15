@@ -6,6 +6,10 @@ function renderizarMensaje(mensaje) {
     return JSON.stringify({mensaje}, null, 2);
 }
 
+export const renderizarMensajeCRUD = (mensaje, data) =>{
+    return JSON.stringify({mensaje, data}, null, 2); 
+}
+
 function renderizarSuperheroe(superheroe) {
     return {
         Nombre: superheroe.nombreSuperheroe,
