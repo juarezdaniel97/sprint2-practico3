@@ -1,34 +1,26 @@
 import SuperheroRepository from '../repositories/SuperheroRepository.mjs';
 
-async function obtenerSuperHeroPorId(id) {
-    return await SuperheroRepository.obtobtenerPorId(id);
+export const obtenerListaSuperHeroesService = async () => {
+    return await SuperheroRepository.getAll()
 }
 
-async function obtenerListaSuperHeroes() {
-    return await SuperheroRepository.obtenerTodos()
+export const obtenerSuperHeroPorIdService = async (id) => {
+    return await SuperheroRepository.getFindById(id);
 }
 
-async function buscarSuperHeroPorAtributo(atributo, valor) {
-    return await SuperheroRepository.buscarPorAtributo(atributo,valor);
+export const buscarSuperHeroPorAtributoService = async (atributo, valor) => {
+    return await SuperheroRepository.getFindByAttribute(atributo,valor);
 }
 
-async function obtenerSuperHeroMayoresA30() {
-    return await SuperheroRepository.obtnerMayoresA30();
+export const buscarSuperHeroMayoresA30Service = async () => {
+    return await SuperheroRepository.getMayoresA30();
 }
 
-async function agregarSuperHero(datos) {
-    return await SuperheroRepository.agregarSuperhero(datos);
+export const agregarSuperHeroService = async (datos) => {
+    return await SuperheroRepository.create(datos);
 }
 
-async function eliminarSuperhero(id) {
-    return await SuperheroRepository.eliminarSuperhero(id);
+export const eliminarSuperheroService = async (id) => {
+    return await SuperheroRepository.delete(id);
 }
 
-export{
-    obtenerSuperHeroPorId,
-    obtenerListaSuperHeroes,
-    buscarSuperHeroPorAtributo,
-    obtenerSuperHeroMayoresA30,
-    agregarSuperHero,
-    eliminarSuperhero
-}

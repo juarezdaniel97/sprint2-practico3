@@ -3,23 +3,24 @@ import IRepository from './IRepository.mjs';
 import mongoose from 'mongoose';
 
 class SuperHeroRepository extends IRepository{
-    async obtobtenerPorId(id){
+    
+    async getAll(){
+        return await SuperHero.find({})
+    }
+
+    async getFindById(id){
         if(!mongoose.Types.ObjectId.isValid(id)){
             throw new Error("ID no válido, Debe contener 24 caracteres hexadecimales.");
         }
         return await SuperHero.findById(id)
     }
 
-    async obtenerTodos(){
-        return await SuperHero.find({})
-    }
-
-    async buscarPorAtributo(atributo, valor){
+    async getFindByAttribute(atributo, valor){
         const query = { [atributo]: new RegExp(valor, 'i')} 
         return await SuperHero.find(query)
     }
 
-    async obtnerMayoresA30(){
+    async getMayoresA30(){
         //const query1 = { edad: {$gt: 30}}
         //const query2 = { edad: {$gt: 30}, planetaOrigen: 'Tierra'}
         //const query3 = { edad: {$gt: 30}, planetaOrigen: 'Tierra', poderes: { $size: {$gte: 2}}}
@@ -33,8 +34,7 @@ class SuperHeroRepository extends IRepository{
 
     }
 
-
-    async agregarSuperhero(datos){
+    async create(datos){
         
         try {
             const superhero = new SuperHero(datos);
@@ -45,7 +45,7 @@ class SuperHeroRepository extends IRepository{
         }
     }
 
-    async eliminarSuperhero(id){
+    async delete(id){
         return await SuperHero.findByIdAndDelete(id); 
     }
     

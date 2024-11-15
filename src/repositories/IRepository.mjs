@@ -1,20 +1,33 @@
 
 class IRepository{
-    obtenerPorId(id){
-        throw new Error("Método 'obtenerPorId()' no implementado");
+    getFindById(id){
+        throw new Error("Método 'getFindById()' no implementado");
     }
 
-    obtenerTodos(){
-        throw new Error("Método 'obtenerTodos()' no implementado");
+    getAll(){
+        throw new Error("Método 'getAll()' no implementado");
     }
 
-    buscarPorAtributo(atributo, valor){
+    getFindByAttribute(atributo, valor){
         throw new Error("Método 'buscarPorAtributo()' no implementado");
     }
 
-    obtnerMayoresA30(){
-        throw new Error("Método 'obtenerMayoresA30()' no implementado");
+    getMayoresA30(){
+        throw new Error("Método 'getMayoresA30' no implementado");
     }
+
+    create(){
+        throw new Error("Método 'create()' no implementado");
+    }
+
+    delete(){
+        throw new Error("Método 'delete()' no implementado");
+    }
+/*
+    update(){
+        throw new Error("Método 'update()' no implementado");
+    }
+*/
 }
 
 export default IRepository;
