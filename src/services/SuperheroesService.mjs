@@ -28,3 +28,7 @@ export const eliminarSuperHeroPorNombreService = async (nombre) => {
     return await SuperheroRepository.deleteByName(nombre);
 }
 
+export const actualizarSuperHeroService = async (id, data) => {
+    return await SuperheroRepository.update(id, data);
+}
+

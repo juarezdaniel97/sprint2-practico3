@@ -27,11 +27,11 @@ class IRepository{
     deleteByName(){
         throw new Error("Método 'delete()' no implementado");
     }
-/*
-    update(){
+
+    update(id, data){
         throw new Error("Método 'update()' no implementado");
     }
-*/
+
 }
 
 export default IRepository;

@@ -6,7 +6,8 @@ import {
     obtenerSuperHeroMayoresA30Controller,
     agregarSuperHeroController,
     eliminarSuperHeroPorIdController,
-    eliminarSuperHeroPorNombreController
+    eliminarSuperHeroPorNombreController,
+    actualizarSuperHeroController
 } from '../controllers/superheroesController.mjs';
 
 
@@ -19,6 +20,7 @@ router.get('/heroes/mayores/30', obtenerSuperHeroMayoresA30Controller);
 router.post('/heroes/', agregarSuperHeroController );
 router.delete('/heroes/delete/:id', eliminarSuperHeroPorIdController);
 router.delete('/heroes/delete-nombre/:nombre', eliminarSuperHeroPorNombreController);
+router.put('/heroes/update/:id', actualizarSuperHeroController);
 
 
 export default router;

@@ -69,6 +69,22 @@ class SuperHeroRepository extends IRepository{
 
         return superheroes;
     }
+
+    async update(id, data){
+        /*FORMA 1 
+            Sólo actualiza, pero no retorna el objecto actualizado
+        */
+        //return await SuperHero.updateOne({_id:id}, data);
+
+        //FORMA 2
+        const documentUpdate = await SuperHero.findByIdAndUpdate(id, data, { new: true });
+
+        if (!documentUpdate) {
+            throw new Error("¡Superheroe no encontrado!");
+        }
+
+        return documentUpdate
+    }
 }
 
 export default new SuperHeroRepository();

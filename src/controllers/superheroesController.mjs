@@ -5,7 +5,8 @@ import {
     buscarSuperHeroMayoresA30Service,
     agregarSuperHeroService,
     eliminarSuperheroPorIdService,
-    eliminarSuperHeroPorNombreService
+    eliminarSuperHeroPorNombreService,
+    actualizarSuperHeroService
 } from '../services/SuperheroesService.mjs';
 
 import {
@@ -94,23 +95,38 @@ export const eliminarSuperHeroPorIdController = async (req, res) => {
     }
 }
 
-export const eliminarSuperHeroPorNombreController = async (req, res) =>{
+export const eliminarSuperHeroPorNombreController = async (req, res) => {
 
     try {
-        const {nombre} = req.params; 
-        const superheroes = await eliminarSuperHeroPorNombreService (nombre); 
+        const { nombre } = req.params;
+        const superheroes = await eliminarSuperHeroPorNombreService(nombre);
 
         //aqui va un if para determinar si es 1 o más Superheroes
         if (superheroes.length === 1) {
             res.send(renderizarMensajeCRUD('¡Superheroe eliminado con éxito!', superheroes))
-        }else{
+        } else {
             res.send(renderizarMensajeCRUD('¡Superheroes eliminados con éxito!', superheroes))
         }
-        
+
     } catch (error) {
         res.status(404).send(renderizarMensaje(error.message));
     }
-} 
+}
+
+export const actualizarSuperHeroController = async (req, res) => {
+
+    try {
+        const { id } = req.params;
+        const data = req.body;
+
+        const actualizado = await actualizarSuperHeroService(id, data);
+        console.log(actualizado);
+
+        res.send(renderizarMensajeCRUD('¡Superheroe Actualizado con éxito!', actualizado));
+    } catch (error) {
+        res.status(404).send(renderizarMensaje(error.message));
+    }
+}
 
 
 
