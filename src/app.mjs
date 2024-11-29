@@ -2,6 +2,9 @@ import { connectDB } from "./config/dbConfig.mjs";
 import express from 'express';
 import superHeroRouter from './routes/SuperheroRoutes.mjs'
 
+//agrego 
+import ejs from 'ejs';
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 
