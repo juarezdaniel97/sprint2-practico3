@@ -1,0 +1,16 @@
+/* Estilo base del menú */
+.menu-item {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Efecto hover */
+.menu-item:hover {
+    background-color: #467141;
+    color: #f8f9fa;
+}
+
+/* Efecto activo (opcional si quieres que se quede seleccionado) */
+.menu-item.active {
+    background-color: #495057;
+    color: #ffffff;
+}
