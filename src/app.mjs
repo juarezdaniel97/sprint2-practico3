@@ -24,7 +24,7 @@ app.use('/api',superHeroRouter);
 
 
 app.use((req, res) =>{
-    res.status(404).send({mensaje: "Ruta no encontrada"});
+    res.status(404).render('404');
 });
 
 /*
