@@ -7,17 +7,20 @@
             <!-- Sidebar -->
             <%- include('partials/header') %>
 
-                <!-- Contenido Listar -->
+                <!-- Contenido Principal -->
                 <main class="flex-grow-1 p-4">
                     <!-- Seccion de Listar -->
                     <div>
                         <h2 class="fs-3 mb-3">Listado de SuperHeroes</h2>
                         <p>Aquí va el listado de superheroes</p>
+                        
                         <!-- Filtro por nombre -->
                         <div class="mb-3">
                             <input type="text" id="inputBuscar" class="form-control"
                                 placeholder="Buscar por nombre de superhéroe">
                         </div>
+
+                        <!-- Tabla -->
                         <div>
                             <div class="table-responsive">
                                 <table class="table table-striped table-hover">
@@ -27,42 +30,90 @@
                                             <th>Nombre Real</th>
                                             <th>Edad</th>
                                             <th>Planeta</th>
-                                            <th>Enemigos</th>
-                                            <!-- <th>Poder</th> -->
+                                            <th>Acción</th>
                                         </tr>
                                     </thead>
                                     <tbody id="tablaSuperHero">
                                         <% superheroes.forEach(element=> { %>
                                             <tr>
                                                 <td>
-                                                    <%= element.nombreSuperheroe %>
+                                                    <%= element.nombreSuperheroe || "No especificado" %>
                                                 </td>
                                                 <td>
-                                                    <%= element.nombreReal %>
+                                                    <%= element.nombreReal || "No especificado" %>
                                                 </td>
                                                 <td>
                                                     <%= element.edad %>
                                                 </td>
                                                 <td>
-                                                    <%= element.planetaOrigen %>
+                                                    <%= element.planetaOrigen || "No especificado" %>
                                                 </td>
+
                                                 <td>
-                                                    <%= element.enemigos %>
+                                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                                        data-bs-target="#modalDetalles" data-id="<%= element._id %>"
+                                                        data-nombre=" <%= element.nombreSuperheroe || "No especificado" %>"
+                                                        data-poder="<%= element.poderes %>"
+                                                        data-aliado="<%= element.aliados%>"
+                                                        data-enemigo=" <%= element.enemigos %>">
+                                                        Ver Más
+                                                    </button>
                                                 </td>
-                                                <!-- <td><%# element.poderes.join(', ') %></td> -->
                                             </tr>
+
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="modalDetalles" tabindex="-1"
+                                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <!-- Encabezado -->
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="titoloModal">
+                                                                nombreSuperheroe
+                                                            </h5>
+                                                            <button type="button" class="btn-close"
+                                                                data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <!-- Cuerpo -->
+                                                        <div class="modal-body">
+                                                            <p><strong>ID: </strong> 
+                                                                <span id="modal-id"></span> 
+                                                            </p>
+                                                            <p><strong>Nombre: </strong>
+                                                                <span id="modal-nombre"></span>
+                                                            </p>
+                                                            <p><strong>Poderes: </strong>
+                                                                <span id="modal-poder"></span>
+                                                            </p>
+                                                            <p><strong>Aliados: </strong>
+                                                                <span id="modal-aliado"></span>
+                                                            </p>
+                                                            <p><strong>Enemigos: </strong>
+                                                                <span id="modal-enemigo"></span>
+                                                            </p>
+                                                        </div>
+                                                        <!-- Pie de página -->
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary"
+                                                                data-bs-dismiss="modal">Cerrar</button>
+                                                            <button type="button" class="btn btn-primary">Guardar
+                                                                cambios</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <% }); %>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                     </div>
-
                 </main>
         </div>
 
-        <!-- <script src="/js/menu.js"></script> -->
+
         <script src="/js/filtrado.js"></script>
+        <script src="/js/modalListar.js"></script>
     </body>
 
 </html>
