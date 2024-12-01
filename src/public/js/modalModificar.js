@@ -17,6 +17,13 @@ document.addEventListener('DOMContentLoaded', () => {
         
         //Asigna datos a los campos del formulario
         document.getElementById('form-nombre').value = nombre;
+        document.getElementById('form-nombreReal').value = nombreReal;
+        document.getElementById('form-edad').value = edad;
+        document.getElementById('form-planeta').value = planetaOrigen;
+        document.getElementById('form-debilidad').value = debilidad;
+        document.getElementById('form-poderes').value = poderes;
+        document.getElementById('form-aliados').value = aliados;
+        document.getElementById('form-enemigos').value = enemigos;
     });
 
     modalFormulario.addEventListener('hidden.bs.modal', ()=>{

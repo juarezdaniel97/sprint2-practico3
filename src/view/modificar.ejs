@@ -51,8 +51,15 @@
                                                 <td>
                                                     <button type="button" class="btn btn-primary" 
                                                     data-bs-toggle="modal" data-bs-target="#modalFormulario"
-                                                    data-nombre="<%= element.nombreSuperheroe || "No especificado" %>">
-                                                        Editar
+                                                    data-nombre="<%= element.nombreSuperheroe %>"
+                                                    data-nombrReal="<%= element.nombreReal %>"
+                                                    data-edad="<%= element.edad %>"
+                                                    data-planeta="<%= element.planetaOrigen|| "No especificado" %>"
+                                                    data-debibilidad="<%= element.debilidad || "No especificado" %>"
+                                                    data-poderes="<%= element.poderes %>"
+                                                    data-aliados="<%= element.aliados || "No especificado" %>"
+                                                    data-enemigos="<%= element.enemigos || "No especificado" %>">
+                                                    Editar
                                                     </button>                                                
                                                 </td>
                                             </tr>
