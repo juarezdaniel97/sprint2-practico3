@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<%- include('partials/head') %>
+
+    <body class="bg-light">
+        <div class="d-flex" style="height: 100vh;">
+            <!-- Sidebar -->
+            <%- include('partials/header') %>
+
+                <!-- Contenido Principal -->
+                <main class="flex-grow-1 p-4">
+                    <!-- Seccion de Modificar -->
+                    <div>
+                        <h2 class="fs-3 mb-3">Modificar SuperHeroes</h2>
+
+                        <!-- Filtro por nombre -->
+                        <div class="mb-3">
+                            <input type="text" id="inputBuscar" class="form-control"
+                                placeholder="Buscar por nombre de superhéroe">
+                        </div>
+
+                        <!-- Tabla -->
+                        <div>
+                            <div class="table-responsive">
+                                <table class="table table-striped table-hover">
+                                    <thead class="table-dark">
+                                        <tr>
+                                            <th>Superheroe</th>
+                                            <th>Nombre Real</th>
+                                            <th>Edad</th>
+                                            <th>Planeta</th>
+                                            <th>Acción</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tablaSuperHero">
+                                        <% superheroes.forEach(element=> { %>
+                                            <tr>
+                                                <td>
+                                                    <%= element.nombreSuperheroe || "No especificado" %>
+                                                </td>
+                                                <td>
+                                                    <%= element.nombreReal || "No especificado" %>
+                                                </td>
+                                                <td>
+                                                    <%= element.edad %>
+                                                </td>
+                                                <td>
+                                                    <%= element.planetaOrigen || "No especificado" %>
+                                                </td>
+
+                                                <td>
+                                                    <button type="button" class="btn btn-primary" 
+                                                    data-bs-toggle="modal" data-bs-target="#modalFormulario"
+                                                    data-nombre="<%= element.nombreSuperheroe || "No especificado" %>">
+                                                        Editar
+                                                    </button>                                                
+                                                </td>
+                                            </tr>
+
+                                            <!-- MODAL -->
+                                            <div class="modal fade" id="modalFormulario" tabindex="-1" aria-labelledby="modalFormularioLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <!-- Encabezado del modal -->
+                                                    <div class="modal-header">
+                                                    <h5 class="modal-title" id="modalFormularioLabel">Formulario</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                            
+                                                    <!-- Cuerpo del modal con el formulario -->
+                                                    <div class="modal-body">
+                                                    <form id="formModal" action="/api/heroes/update/<%= element._id %>" method="POST">
+                                                        <!-- Campo oculto (para editar, si aplica) -->
+                                                        <input type="hidden" name="id" id="form-id">
+                                            
+                                                        <div class="mb-3">
+                                                        <label for="form-nombre" class="form-label">Nombre Superheroe</label>
+                                                        <input type="text" class="form-control" id="form-nombre" name="nombre" placeholder="Ingresa tu nombre" required>
+                                                        </div>
+                                            
+                                                        <div class="mb-3">
+                                                            <label for="form-nombreReal" class="form-label">Nombre Real</label>
+                                                            <input type="text" class="form-control" id="form-nombreReal" name="nombreReal" placeholder="Ingresa tu nombre" required>
+                                                        </div>
+                                                        
+                                                        <div class="mb-3">
+                                                            <label for="form-edad" class="form-label">Edad</label>
+                                                            <input type="number" class="form-control" id="form-edad" name="edad">
+                                                        </div>
+
+                                                        <div class="mb-3">
+                                                            <label for="form-planeta" class="form-label">Planeta</label>
+                                                            <input type="text" class="form-control" id="form-planeta" name="planeta" placeholder="Ingresa el planeta">
+                                                        </div>
+
+                                                        <div class="mb-3">
+                                                            <label for="form-debilidad" class="form-label">Debilidad</label>
+                                                            <input type="text" class="form-control" id="form-debilidad" name="debilidad" placeholder="Ingresa la debilidad">
+                                                        </div>
+
+                                                        <div class="mb-3">
+                                                            <label for="form-poderes" class="form-label">Poderes</label>
+                                                            <textarea class="form-control" id="form-poderes" name="poderes" rows="2" placeholder="Escribe los poderes aquí"></textarea>
+                                                        </div>
+
+                                                        <div class="mb-3">
+                                                            <label for="form-aliados" class="form-label">Aliados</label>
+                                                            <textarea class="form-control" id="form-aliados" name="aliados" rows="2" placeholder="Escribe los aliados aquí"></textarea>
+                                                        </div>
+
+                                                        <div class="mb-3">
+                                                            <label for="form-enemigos" class="form-label">Enemigos</label>
+                                                            <textarea class="form-control" id="form-enemigos" name="enemigos" rows="2" placeholder="Escribe los enemigos aquí"></textarea>
+                                                        </div>
+                                                    </form>
+                                                    </div>
+                                            
+                                                    <!-- Pie de página del modal con botones -->
+                                                    <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                                    <button type="submit" form="formModal" class="btn btn-primary">Guardar</button>
+                                                    </div>
+                                                </div>
+                                                </div>
+                                            </div>
+
+                                            <% }); %>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+        </div>
+
+
+        <script src="/js/filtrado.js"></script>
+        <script src="/js/modalModificar.js"></script>
+    </body>
+
+</html>

@@ -8,7 +8,8 @@ import {
     eliminarSuperHeroPorIdController,
     eliminarSuperHeroPorNombreController,
     actualizarSuperHeroController,
-    apihome
+    apihome,
+    modificarMenuController
 } from '../controllers/superheroesController.mjs';
 
 import {validationErrorHandler} from '../middlewares/errorHandler.mjs';
@@ -22,12 +23,11 @@ import {
 
 
 const router = express.Router();
-/*
-router.get('/',(req, res)=>{
-    res.render('index',{title: 'SuperHero'})
-}); */
+
+
 router.get('/', apihome)
 router.get('/heroes', obtenerListadoSuperHeroController);
+router.get('/heroes/modificar', modificarMenuController);
 router.get('/heroes/:id', obtenerSuperHeroPorIdController);
 router.get('/heroes/buscar/:atributo/:valor', buscarSuperHeroPorAtributoController);
 router.get('/heroes/mayores/30', obtenerSuperHeroMayoresA30Controller);
