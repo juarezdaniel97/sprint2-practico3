@@ -35,8 +35,12 @@ formModificar.addEventListener('submit', async (event) => {
 
 
         if (response.ok) {
-            alert(`Superhéroe ${nombreSuperheroe} Modificado exitosamente...`);
+            
             //Petición fect para recargar la página nuevamente
+            
+            alert(`Superhéroe ${nombreSuperheroe} Modificado exitosamente...`);
+            window.location.reload();
+
         } else {
             const errorData = await response.json();
             console.log('ErroresData-errores: ', errorData);
@@ -45,7 +49,7 @@ formModificar.addEventListener('submit', async (event) => {
 
             if (errores.length === 1) {
                 const {field, value, message, location} = errores[0];
-                
+
                 alert(`${message} \n Error en el campo: ${field} \n El valor ingresado es: ${value} `)
                 console.log(location);
 
@@ -59,8 +63,6 @@ formModificar.addEventListener('submit', async (event) => {
 
     } catch (error) {
         alert(`Error al enviar formulario: ${error}`);
-
     }
 
-    console.log(datosActualizados);
 });
