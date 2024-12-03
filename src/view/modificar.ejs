@@ -51,6 +51,7 @@
                                                 <td>
                                                     <button type="button" class="btn btn-primary" 
                                                     data-bs-toggle="modal" data-bs-target="#modalFormulario"
+                                                    data-id="<%= element._id %>"
                                                     data-nombre="<%= element.nombreSuperheroe %>"
                                                     data-nombrReal="<%= element.nombreReal %>"
                                                     data-edad="<%= element.edad %>"
@@ -70,16 +71,18 @@
                                                 <div class="modal-content">
                                                     <!-- Encabezado del modal -->
                                                     <div class="modal-header">
-                                                    <h5 class="modal-title" id="modalFormularioLabel">Formulario</h5>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        <h5 class="modal-title" id="modalFormularioLabel">Formulario</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
                                             
                                                     <!-- Cuerpo del modal con el formulario -->
                                                     <div class="modal-body">
-                                                    <form id="formModal" action="/api/heroes/update/<%= element._id %>" method="POST">
-                                                        <!-- Campo oculto (para editar, si aplica) -->
-                                                        <input type="hidden" name="id" id="form-id">
-                                            
+                                                    <form id="formModificar">
+                                                        
+                                                        <!-- Campo oculto (sirve para eliminar) -->
+                                                        <input type="hidden" name="id" id="form-id" value="">
+
+
                                                         <div class="mb-3">
                                                         <label for="form-nombre" class="form-label">Nombre Superheroe</label>
                                                         <input type="text" class="form-control" id="form-nombre" name="nombre" placeholder="Ingresa tu nombre" required>
@@ -125,7 +128,7 @@
                                                     <!-- Pie de página del modal con botones -->
                                                     <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                                    <button type="submit" form="formModal" class="btn btn-primary">Guardar</button>
+                                                    <button type="submit" form="formModificar" class="btn btn-primary">Guardar</button>
                                                     </div>
                                                 </div>
                                                 </div>
@@ -143,6 +146,7 @@
 
         <script src="/js/filtrado.js"></script>
         <script src="/js/modalModificar.js"></script>
+        <script src="/js/formularioModificar.js"></script>
     </body>
 
 </html>

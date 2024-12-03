@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const button = event.relatedTarget; //Botón que abrió el modal
 
         //Datos
+        const id = button.getAttribute('data-id');
         const nombre = button.getAttribute('data-nombre');
         const nombreReal = button.getAttribute('data-nombrReal');
         const edad = button.getAttribute('data-edad');
@@ -16,6 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const enemigos = button.getAttribute('data-enemigos') || '';
         
         //Asigna datos a los campos del formulario
+        document.getElementById('form-id').value = id;
         document.getElementById('form-nombre').value = nombre;
         document.getElementById('form-nombreReal').value = nombreReal;
         document.getElementById('form-edad').value = edad;

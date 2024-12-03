@@ -15,7 +15,7 @@ export const validationErrorHandler = (req, res, next) =>{
         
         return res.status(400).json({
             success: false,
-            message: 'Errores de validación entrados',
+            message: '¡Errores de validación en los datos ingresados!',
             errores: detallesError
         })
     }
