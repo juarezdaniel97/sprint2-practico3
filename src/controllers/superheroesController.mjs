@@ -25,11 +25,15 @@ export const apihome = async (req, res) => {
 export const modificarMenuController = async(req, res) =>{
     try {
         const superheroes = await obtenerListaSuperHeroesService();
-        res.render('modificar', { superheroes: superheroes, title:'Modificar' }); // Renderizar la vista con los superhéroes
+        res.render('modificar', { superheroes: superheroes, title:'Modificar SuperHero' }); // Renderizar la vista con los superhéroes
 
     } catch (error) {
         res.status(500).send('Error al obtener los superhéroes');
     }
+}
+
+export const addMenuController = async(req, res) => {
+    res.render('addSuperHero',{title: 'Agregar SuperHero'});
 }
 
 export const obtenerListadoSuperHeroController = async (req, res) => {
@@ -37,7 +41,7 @@ export const obtenerListadoSuperHeroController = async (req, res) => {
     try {
         const superheroes = await obtenerListaSuperHeroesService();
         // res.send(renderizarListaSuperheroe(superheroes));
-        res.render('listado', { superheroes: superheroes, title:'Listado' }); // Renderizar la vista con los superhéroes
+        res.render('listado', { superheroes: superheroes, title:'Listado SuperHero' }); // Renderizar la vista con los superhéroes
 
     } catch (error) {
         res.status(500).send('Error al obtener los superhéroes');

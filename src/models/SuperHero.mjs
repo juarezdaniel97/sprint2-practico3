@@ -11,7 +11,7 @@ const superheroShema = new mongoose.Schema({
     aliados: [String],
     enemigos: [String],
     createdAt: {type: Date, default: Date.now} ,
-    autor: {type: String, required: true}
+    autor: {type: String, default: 'Daniel Juarez'}
 },{collection: 'Grupo-13'});
 
 export default mongoose.model('SuperHero',superheroShema);
