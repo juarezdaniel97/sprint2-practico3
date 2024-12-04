@@ -55,7 +55,9 @@
                                                         data-nombre=" <%= element.nombreSuperheroe || "No especificado" %>"
                                                         data-poder="<%= element.poderes %>"
                                                         data-aliado="<%= element.aliados%>"
-                                                        data-enemigo=" <%= element.enemigos %>">
+                                                        data-enemigo=" <%= element.enemigos %>"
+                                                        data-autor=" <%= element.autor %>"
+                                                        data-fecha=" <%= element.createdAt %>">
                                                         Ver Más
                                                     </button>
                                                 </td>
@@ -69,7 +71,7 @@
                                                         <!-- Encabezado -->
                                                         <div class="modal-header">
                                                             <h5 class="modal-title" id="titoloModal">
-                                                                nombreSuperheroe
+                                                                Datos
                                                             </h5>
                                                             <button type="button" class="btn-close"
                                                                 data-bs-dismiss="modal" aria-label="Close"></button>
@@ -90,6 +92,12 @@
                                                             </p>
                                                             <p><strong>Enemigos: </strong>
                                                                 <span id="modal-enemigo"></span>
+                                                            </p>
+                                                            <p><strong>Autor: </strong>
+                                                                <span id="modal-autor"></span>
+                                                            </p>
+                                                            <p><strong>Fecha: </strong>
+                                                                <span id="modal-fecha"></span>
                                                             </p>
                                                         </div>
                                                         <!-- Pie de página -->

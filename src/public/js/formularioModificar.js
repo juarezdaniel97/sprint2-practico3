@@ -49,13 +49,13 @@ formModificar.addEventListener('submit', async (event) => {
 
             if (errores.length === 1) {
                 const {field, value, message, location} = errores[0];
-
+                alert(`${errorData.message}`);
                 alert(`${message} \n Error en el campo: ${field} \n El valor ingresado es: ${value} `)
                 console.log(location);
 
             }else{
+                alert(`${errorData.message}`);
                 errores.forEach(error =>{
-                    alert(`${errorData.message}`)
                     alert(`${error.message} \n Error en el campo: ${error.field} \n El valor ingresado es: ${error.value} `)
                 });   
             }

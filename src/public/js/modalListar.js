@@ -14,7 +14,8 @@ document.addEventListener('DOMContentLoaded', ()=>{
         const poder = button.getAttribute('data-poder');
         const aliado = button.getAttribute('data-aliado');
         const enemigo = button.getAttribute('data-enemigo');
-        
+        const autor = button.getAttribute('data-autor');
+        const fecha = button.getAttribute('data-fecha');
         
         // Asignar datos al modal
         modalDetalles.querySelector('#modal-id').textContent = id
@@ -22,5 +23,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
         modalDetalles.querySelector('#modal-poder').textContent = poder;
         modalDetalles.querySelector('#modal-aliado').textContent = aliado;
         modalDetalles.querySelector('#modal-enemigo').textContent = enemigo;
+        modalDetalles.querySelector('#modal-autor').textContent = autor;
+        modalDetalles.querySelector('#modal-fecha').textContent = fecha;
     });
 })
