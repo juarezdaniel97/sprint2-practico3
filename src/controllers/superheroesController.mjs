@@ -19,7 +19,7 @@ import {
 
 
 export const apihome = async (req, res) => {
-    res.render('index', { title: 'SuperHero' });
+    res.render('dashboard', { title: 'SuperHero' });
 }
 
 export const editMenuController = async (req, res) =>{
@@ -52,7 +52,7 @@ export const obtenerListadoSuperHeroController = async (req, res) => {
     try {
         const superheroes = await obtenerListaSuperHeroesService();
         // res.send(renderizarListaSuperheroe(superheroes));
-        res.render('listado', { superheroes: superheroes, title:'Listado SuperHero' }); // Renderizar la vista con los superhéroes
+        res.render('listSuperHero', { superheroes: superheroes, title:'Listado SuperHero' }); // Renderizar la vista con los superhéroes
 
     } catch (error) {
         res.status(500).send('Error al obtener los superhéroes');

@@ -3,7 +3,7 @@ import express from 'express';
 import superHeroRouter from './routes/SuperheroRoutes.mjs'
 
 //agrego 
-import ejs from 'ejs';
+//import ejs from 'ejs';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -27,10 +27,6 @@ app.use((req, res) =>{
     res.status(404).render('404');
 });
 
-/*
-app.get('/',(req, res)=>{
-    res.render('index',{title: 'SuperHero'})
-})*/
 
 //Iniciar el servidor
 app.listen(PORT, ()=>{
