@@ -10,7 +10,8 @@ import {
     actualizarSuperHeroController,
     apihome,
     editMenuController,
-    addMenuController
+    addMenuController,
+    deleteMenuController
 } from '../controllers/superheroesController.mjs';
 
 import {validationErrorHandler} from '../middlewares/errorHandler.mjs';
@@ -30,7 +31,7 @@ router.get('/', apihome)
 router.get('/heroes', obtenerListadoSuperHeroController);
 router.get('/heroes/modificar', editMenuController);
 router.get('/heroes/addSuperhero', addMenuController);
-
+router.get('/heroes/deleteSuperHero', deleteMenuController);
 router.get('/heroes/:id', obtenerSuperHeroPorIdController);
 router.get('/heroes/buscar/:atributo/:valor', buscarSuperHeroPorAtributoController);
 router.get('/heroes/mayores/30', obtenerSuperHeroMayoresA30Controller);
