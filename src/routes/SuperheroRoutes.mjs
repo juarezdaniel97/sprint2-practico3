@@ -9,7 +9,7 @@ import {
     eliminarSuperHeroPorNombreController,
     actualizarSuperHeroController,
     apihome,
-    modificarMenuController,
+    editMenuController,
     addMenuController
 } from '../controllers/superheroesController.mjs';
 
@@ -28,7 +28,7 @@ const router = express.Router();
 
 router.get('/', apihome)
 router.get('/heroes', obtenerListadoSuperHeroController);
-router.get('/heroes/modificar', modificarMenuController);
+router.get('/heroes/modificar', editMenuController);
 router.get('/heroes/addSuperhero', addMenuController);
 
 router.get('/heroes/:id', obtenerSuperHeroPorIdController);

@@ -22,10 +22,10 @@ export const apihome = async (req, res) => {
     res.render('index', { title: 'SuperHero' });
 }
 
-export const modificarMenuController = async(req, res) =>{
+export const editMenuController = async(req, res) =>{
     try {
         const superheroes = await obtenerListaSuperHeroesService();
-        res.render('modificar', { superheroes: superheroes, title:'Modificar SuperHero' }); // Renderizar la vista con los superhéroes
+        res.render('editSuperhero', { superheroes: superheroes, title:'Modificar SuperHero' }); // Renderizar la vista con los superhéroes
 
     } catch (error) {
         res.status(500).send('Error al obtener los superhéroes');
