@@ -14,3 +14,13 @@
     background-color: #495057;
     color: #ffffff;
 }
+
+.table-container {
+    max-height: 500px; /* Ajusta la altura del contenedor */
+    overflow-y: auto;  /* Habilita el scroll vertical */
+}
+
+.agregar-container{
+    max-height: 500px; /* Ajusta la altura del contenedor */
+    overflow-y: auto;  /* Habilita el scroll vertical */
+}
