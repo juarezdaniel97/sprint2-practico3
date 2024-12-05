@@ -14,13 +14,13 @@ app.set('views', './view')
 
 //Configuración Express-ejs-layout
 app.use(expressEjsLayouts);
-// app.set('layout', 'layout');
 
 //Conexión a la Base de Datos
 connectDB();
 
 //Para archivos estáticos
 app.use(express.static('public'));
+
 //Configuración de Rutas
 app.use('/api',superHeroRouter);
 
