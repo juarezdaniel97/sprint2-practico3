@@ -5,7 +5,7 @@ import expressEjsLayouts from "express-ejs-layouts";
 
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = 3000;
 
 //MIDDLEWARE
 app.use(express.json());
